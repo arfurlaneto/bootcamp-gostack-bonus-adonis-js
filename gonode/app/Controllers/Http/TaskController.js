@@ -33,6 +33,8 @@ class TaskController {
   async show ({ params }) {
     const task = await Task.findOrFail(params.id)
 
+    await task.load('user')
+
     return task
   }
 
